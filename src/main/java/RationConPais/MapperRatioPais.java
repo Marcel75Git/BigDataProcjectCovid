@@ -20,7 +20,9 @@ import java.io.IOException;
             double uno = Double.parseDouble(countriesAndTerritories);
             double dos = Double.parseDouble(casos);
             double r = uno/dos;
-            context.write(new Text(country), new DoubleWritable(r));
+              if(uno >= 0 && dos > 0){
+                  context.write(new Text(country), new DoubleWritable(r));
+              }
         }catch (NumberFormatException e){
             e.printStackTrace();
         }catch (ArithmeticException e) {
